@@ -1,4 +1,4 @@
-package ies.carrillo.ejemploclasesqlite;
+package ies.carrillo.ejemploclasesqlite.activities;
 
 import android.os.Bundle;
 
@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import ies.carrillo.ejemploclasesqlite.R;
 
 public class MainActivity extends AppCompatActivity {
 
