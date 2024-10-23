@@ -24,7 +24,7 @@ public interface PersonDAO {
     @Delete
     void delete(Person person);
 
-    @Delete
+    @Query("DELETE FROM Person  WHERE id = :id")
     void deleteById(long id);
 
     @Query("SELECT * FROM Person")

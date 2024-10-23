@@ -24,7 +24,7 @@ public abstract class DatabaseHelper extends RoomDatabase {
     public static synchronized DatabaseHelper getInstance(Context context) {
         //Si no se ha creado la bd, se crea
         if (instance == null) {
-            instance = Room.databaseBuilder(context, DatabaseHelper.class, "ContactBook").fallbackToDestructiveMigration(true).build();
+            instance = Room.databaseBuilder(context, DatabaseHelper.class, "ContactBook").fallbackToDestructiveMigration().build();
         }
         return instance;
     }

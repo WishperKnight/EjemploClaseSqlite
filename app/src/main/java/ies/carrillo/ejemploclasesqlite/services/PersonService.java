@@ -6,6 +6,7 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import ies.carrillo.ejemploclasesqlite.daos.PersonDAO;
 import ies.carrillo.ejemploclasesqlite.database.DatabaseHelper;
@@ -111,7 +112,7 @@ public class PersonService implements PersonDAO {
         } catch (Exception e) {
             Log.e("PersonService getAll", e.toString());
         }
-        return people;
+        return people.stream().sorted((o1, o2 )-> o2.getAge().compareTo(o1.getAge())).collect(Collectors.toList());
     }
 
     @Override

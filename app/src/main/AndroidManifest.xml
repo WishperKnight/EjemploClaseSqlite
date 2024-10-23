@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application
         android:allowBackup="true"
@@ -11,13 +11,23 @@
         android:roundIcon="@drawable/sql_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.EjemploClaseSqlite"
-        tools:targetApi="31" >
+        tools:targetApi="31">
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".activities.DetailsPersonActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.SplashActivity"
-            android:exported="true" >
+            android:name=".activities.UpdatePersonActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.InsertPersonActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ListPersonActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
