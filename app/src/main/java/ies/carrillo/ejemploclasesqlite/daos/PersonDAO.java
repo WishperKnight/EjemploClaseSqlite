@@ -15,16 +15,25 @@ public interface PersonDAO {
     @Insert
     long insert(Person person);
 
-    void insertPeople(Person... people);
+    @Insert
+    void insertPeople(List<Person> people);
+
     @Update
     void update(Person person);
+
     @Delete
     void delete(Person person);
+
     @Delete
     void deleteById(long id);
+
     @Query("SELECT * FROM Person")
     List<Person> getAll();
-    @Query("SELECT * FROM Person WHERE id = :id")
+
+    @Query("SELECT * FROM Person p WHERE p.id = :id")
     Person getById(long id);
+
+    @Query("SELECT * FROM Person p WHERE p.age >= 18")
+    List<Person> getAdults();
 
 }
