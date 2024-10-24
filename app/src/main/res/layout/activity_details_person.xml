@@ -7,4 +7,23 @@
     android:layout_height="match_parent"
     tools:context=".activities.DetailsPersonActivity">
 
+    <LinearLayout
+        android:id="@+id/linearDetails"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvPersonId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:text="TextView" />
+
+        <ListView
+            android:id="@+id/lvCars"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

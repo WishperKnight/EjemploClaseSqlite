@@ -1,6 +1,8 @@
 package ies.carrillo.ejemploclasesqlite.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -24,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
     private ListView lvPersons;
     private Button btnAddPersons;
     private PersonAdapter adapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,16 +36,36 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        loadingComponents();
-    }
 
-    void loadingComponents() {
         personService = new PersonService(getApplication());
         lvPersons = findViewById(R.id.lvPersons);
         btnAddPersons = findViewById(R.id.btnAddPersons);
         adapter = new PersonAdapter(getApplicationContext(), 0, personService.getAll());
         lvPersons.setAdapter(adapter);
-        btnAddPersons.setOnClickListener(new View.OnClickListener() {
+
+        lvPersons.setOnItemClickListener(v->{
+            Person person = (Person) lvPersons.getItemAtPosition(lvPersons.getPositionForView(v));
+            Intent intent = new Intent(getApplicationContext(), DetailsPersonActivity.class);
+            intent.putExtra("person", person);
+            startActivity(intent);
+        });
+        btnAddPersons.setOnClickListener(v->{
+            Random r = new Random();
+            Integer randomValue = r.nextInt(100);
+            Person person = new Person();
+            person.setName("Jose " + randomValue);
+            person.setAge(randomValue);
+            person.setSurname("Perez " + randomValue);
+            person.setEmail("email" + randomValue + "@gmail.com");
+
+            personService.insert(person);
+
+            long idPersonSaved = personService.insert(person);
+            Log.i("Id person added: ", person.getId() + "");
+            Toast.makeText(getApplicationContext(), "Person saved with id: " + idPersonSaved, Toast.LENGTH_SHORT).show();
+            refreshList();
+        });
+       /* btnAddPersons.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Random r = new Random();
@@ -54,13 +75,15 @@ public class MainActivity extends AppCompatActivity {
                 person.setAge(randomValue);
                 person.setSurname("Perez " + String.valueOf(randomValue));
                 person.setEmail("email" + String.valueOf(randomValue) + "@gmail.com");
+
                 personService.insert(person);
 
                 long idPersonSaved = personService.insert(person);
+                Log.i("Id person added: ", person.getId() + "");
                 Toast.makeText(getApplicationContext(), "Person saved with id: " + idPersonSaved, Toast.LENGTH_SHORT).show();
                 refreshList();
             }
-        });
+        });*/
 
     }
 
