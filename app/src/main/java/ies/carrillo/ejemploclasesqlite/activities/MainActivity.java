@@ -3,7 +3,6 @@ package ies.carrillo.ejemploclasesqlite.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -43,12 +42,13 @@ public class MainActivity extends AppCompatActivity {
         adapter = new PersonAdapter(getApplicationContext(), 0, personService.getAll());
         lvPersons.setAdapter(adapter);
 
-        lvPersons.setOnItemClickListener(v->{
-            Person person = (Person) lvPersons.getItemAtPosition(lvPersons.getPositionForView(v));
+        lvPersons.setOnItemClickListener((parent, view, position, id) -> {
+            Person person = (Person) lvPersons.getItemAtPosition(position);
             Intent intent = new Intent(getApplicationContext(), DetailsPersonActivity.class);
             intent.putExtra("person", person);
             startActivity(intent);
         });
+
         btnAddPersons.setOnClickListener(v->{
             Random r = new Random();
             Integer randomValue = r.nextInt(100);
@@ -58,32 +58,11 @@ public class MainActivity extends AppCompatActivity {
             person.setSurname("Perez " + randomValue);
             person.setEmail("email" + randomValue + "@gmail.com");
 
-            personService.insert(person);
-
             long idPersonSaved = personService.insert(person);
             Log.i("Id person added: ", person.getId() + "");
             Toast.makeText(getApplicationContext(), "Person saved with id: " + idPersonSaved, Toast.LENGTH_SHORT).show();
             refreshList();
         });
-       /* btnAddPersons.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Random r = new Random();
-                Integer randomValue = r.nextInt(100);
-                Person person = new Person();
-                person.setName("Jose " + String.valueOf(randomValue));
-                person.setAge(randomValue);
-                person.setSurname("Perez " + String.valueOf(randomValue));
-                person.setEmail("email" + String.valueOf(randomValue) + "@gmail.com");
-
-                personService.insert(person);
-
-                long idPersonSaved = personService.insert(person);
-                Log.i("Id person added: ", person.getId() + "");
-                Toast.makeText(getApplicationContext(), "Person saved with id: " + idPersonSaved, Toast.LENGTH_SHORT).show();
-                refreshList();
-            }
-        });*/
 
     }
 

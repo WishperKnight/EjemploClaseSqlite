@@ -2,6 +2,7 @@ package ies.carrillo.ejemploclasesqlite.models;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
+import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
@@ -17,6 +18,9 @@ public class Car implements Serializable {
     @ColumnInfo(name = "plate")
     @NonNull
     private String plate;
+
+    @Embedded
+    private Address address;
 
     @ColumnInfo(name = "model")
     private String model;
@@ -62,11 +66,20 @@ public class Car implements Serializable {
         this.personId = personId;
     }
 
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
     @Override
     public String toString() {
         return "Car{" +
                 "id=" + id +
                 ", plate='" + plate + '\'' +
+                ", address=" + address +
                 ", model='" + model + '\'' +
                 ", personId=" + personId +
                 '}';

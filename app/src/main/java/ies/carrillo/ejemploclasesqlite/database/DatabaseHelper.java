@@ -13,7 +13,7 @@ import ies.carrillo.ejemploclasesqlite.daos.PersonDAO;
 import ies.carrillo.ejemploclasesqlite.models.Car;
 import ies.carrillo.ejemploclasesqlite.models.Person;
 
-@Database(entities = {Person.class, Car.class}, version = 2)
+@Database(entities = {Person.class, Car.class}, version = 4)
 public abstract class DatabaseHelper extends RoomDatabase {
 
     //Persona DAO
