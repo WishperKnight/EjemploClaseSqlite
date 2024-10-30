@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 
-@Entity(tableName = "Car", foreignKeys = {@ForeignKey(entity = Person.class, parentColumns = "id", childColumns = "person_id", onDelete = ForeignKey.CASCADE)})
+@Entity(tableName = "car", foreignKeys = {@ForeignKey(entity = Person.class, parentColumns = "id", childColumns = "person_id", onDelete = ForeignKey.CASCADE)})
 public class Car implements Serializable {
     @PrimaryKey(autoGenerate = true)
     @NonNull

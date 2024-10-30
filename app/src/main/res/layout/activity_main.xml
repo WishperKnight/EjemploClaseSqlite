@@ -12,6 +12,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+       <EditText
+           android:id="@+id/etCheckpswd"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:inputType="text"
+           android:hint="@string/password"
+           android:minHeight="48dp"
+           android:textColorHint="#546E7A"
+           tools:ignore="Autofill,DuplicateSpeakableTextCheck" />
 
         <ListView
             android:id="@+id/lvPersons"
@@ -23,12 +32,26 @@
         android:id="@+id/btnAddPersons"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginEnd="25sp"
-        android:layout_marginBottom="25sp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
         android:text="+"
         android:textAlignment="center"
         android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/linearMain"
         app:layout_constraintEnd_toEndOf="@id/linearMain" />
+
+    <Button
+        android:id="@+id/btnValidate"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/check_values"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/linearMain"
+        app:layout_constraintStart_toStartOf="@id/linearMain"
+        tools:ignore="SpeakableTextPresentCheck" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

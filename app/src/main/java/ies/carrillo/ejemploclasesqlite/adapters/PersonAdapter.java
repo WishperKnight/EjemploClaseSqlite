@@ -32,7 +32,7 @@ public class PersonAdapter extends ArrayAdapter<Person> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.person_item, parent, false);
         }
         tvPerson = convertView.findViewById(R.id.textView);
-        tvPerson.setText(p.getId() + " " + p.getName() + " " + p.getSurname());
+        tvPerson.setText(p.getId() + " - " + p.getName() + " - " + p.getSurname());
 
         return convertView;
     }

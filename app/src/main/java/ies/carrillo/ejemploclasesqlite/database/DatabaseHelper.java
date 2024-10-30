@@ -10,14 +10,20 @@ import androidx.room.RoomDatabase;
 
 import ies.carrillo.ejemploclasesqlite.daos.CarDAO;
 import ies.carrillo.ejemploclasesqlite.daos.PersonDAO;
+import ies.carrillo.ejemploclasesqlite.daos.UserAccountDAO;
 import ies.carrillo.ejemploclasesqlite.models.Car;
 import ies.carrillo.ejemploclasesqlite.models.Person;
+import ies.carrillo.ejemploclasesqlite.models.UserAccount;
 
-@Database(entities = {Person.class, Car.class}, version = 4)
+@Database(entities = {Person.class, Car.class, UserAccount.class}, version = 8)
 public abstract class DatabaseHelper extends RoomDatabase {
+
+    //User Account DAO
+    public abstract UserAccountDAO userAccountDAO();
 
     //Persona DAO
     public abstract PersonDAO personDAO();
+
     //Car DAO
     public abstract CarDAO carDAO();
 
