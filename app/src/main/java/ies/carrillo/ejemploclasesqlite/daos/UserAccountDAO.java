@@ -16,4 +16,6 @@ public interface UserAccountDAO {
     List<UserAccount> getAll();
     @Query("SELECT * FROM user_account WHERE userId = :userAccountId")
     UserAccount getByUserAccountId(long userAccountId);
+    @Query("SELECT * FROM user_account WHERE username = :username")
+    UserAccount getByUsername(String username);
 }

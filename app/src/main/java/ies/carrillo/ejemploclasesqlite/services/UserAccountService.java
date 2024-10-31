@@ -12,10 +12,10 @@ import ies.carrillo.ejemploclasesqlite.models.UserAccount;
 public class UserAccountService implements UserAccountDAO {
 
     private long insertResult;
+
     private UserAccountDAO userAccountDAO;
     private List<UserAccount> userAccounts;
     private UserAccount user;
-
     public UserAccountService(Application application) {
         DatabaseHelper db = DatabaseHelper.getInstance(application.getApplicationContext());
         userAccountDAO = db.userAccountDAO();
@@ -33,6 +33,20 @@ public class UserAccountService implements UserAccountDAO {
             e.printStackTrace();
         }
         return insertResult;
+    }
+
+    @Override
+    public UserAccount getByUsername(String username) {
+        Thread thread = new Thread(() -> {
+            user = userAccountDAO.getByUsername(username);
+        });
+        thread.start();
+        try {
+            thread.join();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return user;
     }
 
     @Override
@@ -62,4 +76,5 @@ public class UserAccountService implements UserAccountDAO {
         }
         return user;
     }
+
 }

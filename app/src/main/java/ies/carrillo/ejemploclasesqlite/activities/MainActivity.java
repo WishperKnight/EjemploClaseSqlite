@@ -1,6 +1,7 @@
 package ies.carrillo.ejemploclasesqlite.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -91,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         etCheckpswd = findViewById(R.id.etCheckpswd);
+        SharedPreferences sharedPreferences = getSharedPreferences("SESSION", MODE_PRIVATE);
+        etCheckpswd.setText(sharedPreferences.getString("userName", "Not Logged")+"-"+String.valueOf(sharedPreferences.getLong("Id", 0)));
         btnValidate = findViewById(R.id.btnValidate);
 
         btnValidate.setOnClickListener(v -> {
